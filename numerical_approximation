@@ -1,0 +1,108 @@
+## 1.lagrange插值多项式法 lagrange_interpolation
+from numerical_analysis.numerical_approximation import lagrange_interpolation
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = lagrange_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 2.Newton插值法 newton_interpolation
+from numerical_analysis.numerical_approximation import newton_interpolation
+
+def main():
+    a = [2.0, 2.1, 2.2, 2.3]
+    b = [1.414214, 1.449138, 1.483240, 1.516575]
+    y = newton_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 3.Hermite插值法 hermite_interpolation
+from numerical_analysis.numerical_approximation import hermite_interpolation
+
+def main():
+    a = [0.4, 0.5, 0.7, 0.8]
+    b = [-0.916291, -0.693147, -0.356675, -0.223144]
+    d = [2.5, 2.0, 1.43, 1.25]
+    y = hermite_interpolation(a, b, d)
+
+if __name__ == '__main__':
+    main()
+
+
+## 4.分段线性插值法 piecewise_linear_interpolation
+from numerical_analysis.numerical_approximation import piecewise_linear_interpolation
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = piecewise_linear_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 5.分段三次Hermite插值法 piecewise_hermite_interpolation
+from numerical_analysis.numerical_approximation import piecewise_hermite_interpolation
+
+def main():
+    a = [0.4, 0.5, 0.7, 0.8]
+    b = [-0.916291, -0.693147, -0.356675, -0.223144]
+    d = [2.5, 2.0, 1.43, 1.25]
+    y = piecewise_hermite_interpolation(a, b, d)
+
+if __name__ == '__main__':
+    main()
+
+
+## 6.三弯矩插值法（条件1） cubic_spline_interpolation_1
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_1
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = cubic_spline_interpolation_1(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 7.三弯矩插值法（条件二） cubic_spline_interpolation_2
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_2
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 10, 4.51, 4.62, 4.65, 4.66]
+    y = cubic_spline_interpolation_2(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 8.三弯矩插值法（条件三）cubic_spline_interpolation_3
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_3
+
+def main():
+    a = [0.4, 0.5, 0.7, 0.8, 0.9]
+    b = [-0.916291, -0.693147, -0.5, -0.7, -0.916291]
+    y = cubic_spline_interpolation_3(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 9.有理逼近法 rational_approximation
+from numerical_analysis.numerical_approximation import rational_approximation
+
+def main():
+    a = [0, 1, 2, 3, 4]
+    b = [1, 1/2, 1/5, 1/10, 1/17]
+    y = rational_approximation(a, b)
+
+if __name__ == '__main__':
+    main()

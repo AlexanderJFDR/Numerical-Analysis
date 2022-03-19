@@ -1,0 +1,126 @@
+## 1.二分法  dichotomy
+from numerical_analysis.nonlinar_equtions import dichotomy
+from sympy import *
+
+def func(x):
+    y = x * exp(x) - 1
+    return y
+
+def main():
+    root = dichotomy(func, (0, 1))
+    y = func(root)
+    print(str(root)+' '+str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 2.Newton迭代法  root_Newton
+from numerical_analysis.nonlinar_equtions import root_Newton
+from sympy import *
+
+def main():
+    x = symbols('x')
+    f = x * exp(x) - 1
+    root = root_Newton(f, 0)
+    y = f.subs({x: root}).evalf(n=6)
+    print(str(root)+' '+str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 3.Newton迭代法(根的重数未知) unknow_root_Newton
+from numerical_analysis.nonlinar_equtions import unknow_root_Newton
+from sympy import *
+
+def main():
+    x = symbols('x')
+    f = (sin(x)-x/2)**2
+    root = unknow_root_Newton(f, 1.5)
+    y = f.subs({x: root}).evalf(n=8)
+    print(str(root)+' '+str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 4.多点迭代法(割线法、虚位法) root_Secant
+from numerical_analysis.nonlinar_equtions import root_Secant
+from sympy import *
+
+def main():
+    x = symbols('x')
+    f = (sin(x)-x/2)**2
+    root = root_Secant(f, 1.5)
+    y = f.subs({x: root}).evalf(n=8)
+    print(str(root)+' '+str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 5.Newton迭代法求非线性方程组 roots_Newton
+import numpy as np
+from numerical_analysis.nonlinar_equtions import roots_Newton
+from sympy import *
+
+def main():
+    x1 = symbols('x1')
+    x2 = symbols('x2')
+    x = [x1, x2]
+    f = [x1**2-x2-1, x1**2-4*x1+x2**2-x2+3.25]
+    p = [1.5, 1.3]
+    root = roots_Newton(f, p)
+    y = np.zeros((2, 1))
+    for j in range(2):
+        y[j, 0] = f[j].subs(dict(zip(x, root))).evalf(8)
+    print(str(root))
+    print(str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 6.Broyden秩1方法 roots_Broyden
+import numpy as np
+from numerical_analysis.nonlinar_equtions import roots_Broyden
+from sympy import *
+
+def main():
+    x1 = symbols('x1')
+    x2 = symbols('x2')
+    x = [x1, x2]
+    f = [x1**2-x2-1, x1**2-4*x1+x2**2-x2+3.25]
+    p = [1.5, 1.3]
+    root = roots_Broyden(f, p)
+    y = np.zeros((2, 1))
+    for j in range(2):
+        y[j, 0] = f[j].subs(dict(zip(x, root))).evalf(8)
+    print(str(root))
+    print(str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 7.Broyden秩1方法(逆) roots_Broyden_inv
+import numpy as np
+from numerical_analysis.nonlinar_equtions import roots_Broyden_inv
+from sympy import *
+
+def main():
+    x1 = symbols('x1')
+    x2 = symbols('x2')
+    x = [x1, x2]
+    f = [x1**2-x2-1, x1**2-4*x1+x2**2-x2+3.25]
+    p = [1.5, 1.3]
+    root = roots_Broyden_inv(f, p)
+    y = np.zeros((2, 1))
+    for j in range(2):
+        y[j, 0] = f[j].subs(dict(zip(x, root))).evalf(8)
+    print(str(root))
+    print(str(y))
+
+if __name__ == '__main__':
+    main()
