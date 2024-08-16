@@ -1,0 +1,73 @@
+## 1.Newton-Cotes公式 newton_cotes_integration
+# Newton-Cotes公式的相对误差与子区间个数近似成反比关系
+from sympy import *
+from numerical_analysis.numerical_integration import newton_cotes_integration
+
+def main():
+    x = symbols('x')
+    f = x/(4+x**2)
+    y = newton_cotes_integration(f, (0, 1), 3)
+    print(y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 2.Romberg积分法 romberg_integration
+from sympy import *
+from numerical_analysis.numerical_integration import romberg_integration
+
+def main():
+    x = symbols('x')
+    f = 4/(1+x**2)
+    y = romberg_integration(f, (0, 1), max_degree=5)
+    print(y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 3.Gauss求积公式 gauss_integration
+from sympy import *
+from numerical_analysis.numerical_integration import gauss_integration
+
+def main():
+    x = symbols('x')
+    f = 1/x
+    y = gauss_integration(f, (1, 3), 3, option='Legendre')
+    f = x**7*exp(-x)
+    y = gauss_integration(f, (0, 'inf'), 4, option='Laguerre')
+    f = 1/(x**2+2*x+2)
+    y = gauss_integration(f, ('-inf', 'inf'), 5, option='Hermite')
+    print(y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 4.复化的高斯型求积公式 complex_gauss_integration
+from sympy import *
+from numerical_analysis.numerical_integration import complex_gauss_integration
+
+def main():
+    x = symbols('x')
+    f = 1 / x
+    y = complex_gauss_integration(f, (1, 3), 3)
+    print(y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 5.自适应积分方法 adaptive_integration
+from sympy import *
+from numerical_analysis.numerical_integration import adaptive_integration
+
+def main():
+    x = symbols('x')
+    f = exp(x)
+    y = adaptive_integration(f, (0, 10), 0.001)
+    print(y)
+
+if __name__ == '__main__':
+    main()

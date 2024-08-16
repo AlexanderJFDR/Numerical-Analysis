@@ -1,0 +1,195 @@
+## 1.Euler法 euler_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import euler_method
+
+def main():
+    x = symbols('x')
+    y = symbols('y')
+    f = y-2*x/y
+    initial_point = (0.4, 1.3416)
+    X, Y = euler_method(f, (0, 1), initial_point, step=0.1)
+
+if __name__ == '__main__':
+    main()
+
+
+## 2.Milne方法 milne_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import milne_method
+
+def main():
+    x = symbols('x')
+    y = symbols('y')
+    f = y-2*x/y
+    initial_point = (0, 1)
+    X, Y = milne_method(f, (0, 1), initial_point, step=0.1)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 3.显式Adam方法 explicit_adam_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import milne_method, explicit_adam_method
+
+def main():
+    x = symbols('x')
+    y = symbols('y')
+    f = y-2*x/y
+    initial_point = (0, 1)
+    X, Y = explicit_adam_method(f, (0, 1), initial_point, degree=3, step=0.1)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 4.Runge-Kutta方法 runge_kutte_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import runge_kutte_method
+
+def main():
+    x = symbols('x')
+    y = symbols('y')
+    f = y-2*x/y
+    initial_point = (0, 1)
+    X, Y = runge_kutte_method(f, (0, 1), initial_point, degree=4, option='normal', step=0.1, is_draw=True)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 5.预测-校正方法 prediction_correction_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import prediction_correction_method
+
+def main():
+    x = symbols('x')
+    y = symbols('y')
+    f = y-2*x/y
+    initial_point = (0, 1)
+    X, Y = prediction_correction_method(f, (0, 1), initial_point, option='Adams', mode='PMECME', step=0.1, is_draw=True)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 6.方程组求解 runge_kutte4 differential_equations_runge_kutte4
+import numpy as np
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import differential_equations_runge_kutte4
+
+def main():
+    y1 = symbols('y1')
+    y2 = symbols('y2')
+    y3 = symbols('y3')
+    f = []
+    f.append(-21*y1+19*y2-20*y3)
+    f.append(19*y1-21*y2+20*y3)
+    f.append(40*y1-40*y2-40*y3)
+    initial_point = np.array([[0, 1],[0, 0],[0, -1]])
+    X, Y = differential_equations_runge_kutte4(f, [0, 1], initial_point, step=0.01, is_draw=True)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 7.方程组求解 Milne_Hamming differential_equations_Milne_Hamming
+import numpy as np
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import differential_equations_Milne_Hamming
+
+def main():
+    y1 = symbols('y1')
+    y2 = symbols('y2')
+    y3 = symbols('y3')
+    f = []
+    f.append(-21*y1+19*y2-20*y3)
+    f.append(19*y1-21*y2+20*y3)
+    f.append(40*y1-40*y2-40*y3)
+    initial_point = np.array([[0, 1],[0, 0],[0, -1]])
+    X, Y = differential_equations_Milne_Hamming(f, [0, 1], initial_point, step=0.001, is_draw=True)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 8.Gear方法 gear_method
+import numpy as np
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import gear_method
+
+def main():
+    y1 = symbols('y1')
+    y2 = symbols('y2')
+    y3 = symbols('y3')
+    f = []
+    f.append(-21*y1+19*y2-20*y3)
+    f.append(19*y1-21*y2+20*y3)
+    f.append(40*y1-40*y2-40*y3)
+    initial_point = np.array([[0, 1],[0, 0],[0, -1]])
+    X, Y = gear_method(f, [0, 1], initial_point, degree=1, step=0.001, is_draw=True)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 9.打靶法 shooting_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import shooting_method
+
+def main():
+    x1 = symbols('x1')  # x
+    y1 = symbols('y1')  # y
+    y2 = symbols('y2')  # y'
+    f = -y1*y2/4+x1**3/2+4
+    initial_point = (8, 35/3)
+    initial_z = (1.5, 2.5)
+    X, Y = shooting_method(f, (2, 3), initial_point, initial_z, type=1)
+    f = -y1*y2/4+x1**3/2+4
+    initial_point = (2, 6-8/9)
+    initial_z = (7.5, 8.5)
+    X, Y = shooting_method(f, (2, 3), initial_point, initial_z, type=2)
+    f = -y1 * y2 / 4 + x1 ** 3 / 2 + 4
+    initial_point = (-1, 6, -1, 59/9)
+    initial_z = (7.9, 8.1)
+    X, Y = shooting_method(f, (2, 3), initial_point, initial_z, type=3)
+    print(X)
+    print(Y)
+
+if __name__ == '__main__':
+    main()
+
+
+# 10.有限差分法 finite_difference_method
+from sympy import *
+from numerical_analysis.ordinary_differential_equations import finite_difference_method
+
+def main():
+    x = symbols('x')  # x
+    p = -2/x
+    q = 2/x**2
+    r = sin(ln(x))/x**2
+    initial_point = (1, 2)
+    X, Y = finite_difference_method(p, q, r, (1, 2), initial_point, num_section=100, type=1, is_draw=True)
+    initial_point = (0.917621, 1.065571)
+    X, Y = finite_difference_method(p, q, r, (1, 2), initial_point, num_section=10, type=2, is_draw=True)
+    initial_point = (1, 0.082379, 1, 0.934429)
+    X, Y = finite_difference_method(p, q, r, (1, 2), initial_point, num_section=10, type=3, is_draw=True)
+    print(X)
+    print(Y)
+if __name__ == '__main__':
+    main()

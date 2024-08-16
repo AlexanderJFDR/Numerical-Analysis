@@ -1,0 +1,239 @@
+## 1.lagrange插值多项式法 lagrange_interpolation
+from numerical_analysis.numerical_approximation import lagrange_interpolation
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = lagrange_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 2.Newton插值法 newton_interpolation
+from numerical_analysis.numerical_approximation import newton_interpolation
+
+def main():
+    a = [2.0, 2.1, 2.2, 2.3]
+    b = [1.414214, 1.449138, 1.483240, 1.516575]
+    y = newton_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 3.Hermite插值法 hermite_interpolation
+from numerical_analysis.numerical_approximation import hermite_interpolation
+
+def main():
+    a = [0.4, 0.5, 0.7, 0.8]
+    b = [-0.916291, -0.693147, -0.356675, -0.223144]
+    d = [2.5, 2.0, 1.43, 1.25]
+    y = hermite_interpolation(a, b, d)
+
+if __name__ == '__main__':
+    main()
+
+
+## 4.分段线性插值法 piecewise_linear_interpolation
+from numerical_analysis.numerical_approximation import piecewise_linear_interpolation
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = piecewise_linear_interpolation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 5.分段三次Hermite插值法 piecewise_hermite_interpolation
+from numerical_analysis.numerical_approximation import piecewise_hermite_interpolation
+
+def main():
+    a = [0.4, 0.5, 0.7, 0.8]
+    b = [-0.916291, -0.693147, -0.356675, -0.223144]
+    d = [2.5, 2.0, 1.43, 1.25]
+    y = piecewise_hermite_interpolation(a, b, d)
+
+if __name__ == '__main__':
+    main()
+
+
+## 6.三弯矩插值法（条件1） cubic_spline_interpolation_1
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_1
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = cubic_spline_interpolation_1(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 7.三弯矩插值法（条件二） cubic_spline_interpolation_2
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_2
+
+def main():
+    a = [140, 142.4, 143.2, 144, 144.6, 145.2, 145.8, 146.4, 147, 148, 149, 150, 151.2, 152,
+         152.6, 153.4, 155, 156, 157, 158, 159, 159.8, 161, 162, 163, 164, 165, 166.2, 166.8,
+         167.2, 168, 168.8, 169.8, 170.6, 171.2, 172.4, 173.2, 174.2, 175.6, 176.8, 177.6, 178.2, 179.2, 180]
+    b = [201.4, 182.5, 192.9, 209.6, 221.6, 225.9, 222.9, 211.4, 197.1, 185.1, 210.2, 258.1, 296.4, 280.4,
+         201, 194, 339.8, 725.2, 1252.1, 1857.3, 2237.4, 2332.5, 2127, 1688.7, 1098, 591.7, 290, 186, 205.1,
+         229.4, 269.1, 284.6, 262.2, 230.7, 206.2, 179, 185.9, 204.2, 214.7, 202.7, 190.8, 181.5, 177.8, 183]
+    y = cubic_spline_interpolation_2(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 8.三弯矩插值法（条件三）cubic_spline_interpolation_3
+from sympy import *
+from numerical_analysis.numerical_approximation import cubic_spline_interpolation_3
+
+def main():
+    a = [0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1.0, 1.2, 1.3]
+    b = [-0.7, -0.9, -0.7, -0.5, -0.7, -0.9, -0.7, -0.5, -0.7]
+    y = cubic_spline_interpolation_3(a, b)
+    x = symbols('x')
+    print(str(diff(y[0]).subs({x: a[0]})) + ' ' + str(diff(y[7]).subs({x: a[8]})))
+    print(str(diff(diff(y[0])).subs({x: a[0]})) + ' ' + str(diff(diff(y[7])).subs({x: a[8]})))
+
+if __name__ == '__main__':
+    main()
+
+
+## 9.三转角插值法（条件一） three_angle_interpolation1
+from numerical_analysis.numerical_approximation import three_angle_interpolation1
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = three_angle_interpolation1(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 10.三转角插值法（条件二） three_angle_interpolation2
+from numerical_analysis.numerical_approximation import three_angle_interpolation2
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y = three_angle_interpolation2(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 11.三转角插值法（条件三） three_angle_interpolation3
+from sympy import *
+from numerical_analysis.numerical_approximation import three_angle_interpolation3
+
+def main():
+    a = [0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1.0, 1.2, 1.3]
+    b = [-0.7, -0.9, -0.7, -0.5, -0.7, -0.9, -0.7, -0.5, -0.7]
+    y = three_angle_interpolation3(a, b)
+    x = symbols('x')
+    print(str(diff(y[0]).subs({x: a[0]})) + ' ' + str(diff(y[7]).subs({x: a[8]})))
+    print(str(diff(diff(y[0])).subs({x: a[0]})) + ' ' + str(diff(diff(y[7])).subs({x: a[8]})))
+
+if __name__ == '__main__':
+    main()
+
+
+## 12.有理逼近法 rational_approximation
+from numerical_analysis.numerical_approximation import rational_approximation
+
+def main():
+    a = [0, 1, 2, 3, 4]
+    b = [1, 1/2, 1/5, 1/10, 1/17]
+    y = rational_approximation(a, b)
+
+if __name__ == '__main__':
+    main()
+
+
+## 13.线性无关函数族的最佳函数逼近 best_square_approximation
+from sympy import *
+from numerical_analysis.numerical_approximation import best_square_approximation
+
+def main():
+    x = symbols('x')
+    f = [1, x**2, x**4]
+    g = abs(x)
+    y = best_square_approximation(g, f, (-1, 1))
+    print(str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 14.正交函数族的最佳函数逼近 best_square_approximation_optimal
+from sympy import *
+from numerical_analysis.numerical_approximation import best_square_approximation_optimal
+
+def main():
+    x = symbols('x')
+    g = exp(x)
+    y = best_square_approximation_optimal(g, 4, option='Legendre')
+    print(str(y))
+
+if __name__ == '__main__':
+    main()
+
+
+## 15.多项式曲线拟合 polynomial_curve_fitting
+from numerical_analysis.numerical_approximation import polynomial_curve_fitting
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    y, sigma2 = polynomial_curve_fitting(a, b, 10, alpha=1)
+    print(y)
+    print(sigma2)
+
+if __name__ == '__main__':
+    main()
+
+
+## 16.选择最佳拟合次数 select_fit_times
+from numerical_analysis.numerical_approximation import select_fit_times
+
+def main():
+    a = [0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70]
+    b = [0, 1.27, 2.16, 2.86, 3.44, 3.87, 4.15, 4.37, 4.51, 4.62, 4.65, 4.66]
+    select_fit_times(a, b, 10)
+
+if __name__ == '__main__':
+    main()
+
+
+## 17.周期函数逼近 periodic_function_approximation
+from sympy import *
+from numerical_analysis.numerical_approximation import periodic_function_approximation
+
+def main():
+    x = symbols('x')
+    f = sin(2.5*x)+cos(3.5*x)
+    y = periodic_function_approximation(f, 5)
+    print(y)
+
+if __name__ == '__main__':
+    main()
+
+
+## 18.DFT算法 discrete_Fourier_transformation
+from numerical_analysis.numerical_approximation import discrete_Fourier_transformation
+
+def main():
+    b = [201.4, 182.5, 192.9, 209.6, 221.6, 225.9, 222.9, 211.4, 197.1, 185.1, 210.2, 258.1, 296.4, 280.4,
+         201, 194, 339.8, 725.2, 1252.1, 1857.3, 2237.4, 2332.5, 2127, 1688.7, 1098, 591.7, 290, 186, 205.1,
+         229.4, 269.1, 284.6, 262.2, 230.7, 206.2, 179, 185.9, 204.2, 214.7, 202.7, 190.8, 181.5, 177.8, 183]
+    y = discrete_Fourier_transformation(b)
+    print(y)
+
+if __name__ == '__main__':
+    main()
